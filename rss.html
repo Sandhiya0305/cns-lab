@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>RSA Algorithm (User Input)</h3>
+
+<p>Enter Prime p: <input type="number" id="p"></p>
+<p>Enter Prime q: <input type="number" id="q"></p>
+<p>Enter Message: <input type="number" id="msg"></p>
+
+<button onclick="rsa()">Run RSA</button>
+
+<p id="rsaOutput"></p>
+
+<script>
+function rsa() {
+    let p = parseInt(document.getElementById("p").value);
+    let q = parseInt(document.getElementById("q").value);
+    let msg = parseInt(document.getElementById("msg").value);
+
+    let n = p * q;
+    let phi = (p - 1) * (q - 1);
+
+    let e = 17;
+    while (gcd(e, phi) !== 1) e++; // ensure coprime
+
+    let d = 1;
+    while ((e * d) % phi !== 1) d++; // modular inverse
+
+    let encrypted = (msg ** e) % n;
+    let decrypted = (encrypted ** d) % n;
+
+    document.getElementById("rsaOutput").innerHTML =
+        "n = " + n + "<br>" +
+        "phi = " + phi + "<br>" +
+        "e (public key) = " + e + "<br>" +
+        "d (private key) = " + d + "<br><br>" +
+        "Encrypted: " + encrypted + "<br>" +
+        "Decrypted: " + decrypted;
+}
+
+// Helper function for GCD
+function gcd(a, b) {
+    while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+</script>
+
+</body>
+</html>
