@@ -1,0 +1,45 @@
+Trojan
+
+@echo off
+:x
+start mspaint
+start notepad
+start cmd
+start explorer
+start control
+start calc
+goto x
+
+Snort: 
+
+1. Install Snort
+sudo add-apt-repository universe
+sudo apt update
+sudo apt install snort -y
+sudo apt install iputils-ping -y
+
+snort -V
+
+sudo nano /etc/snort/rules/local.rules
+Add:
+alert icmp any any -> any any (msg:"ICMP Ping
+Detected"; sid:1000001; rev:1;)
+
+sudo nano /etc/snort/snort.conf
+
+include $RULE_PATH/local.rules
+
+ip a
+
+sudo snort-i <interface_name>-A console-c
+/etc/snort/snort.conf
+
+sudo snort -i eth0 -A console -c /etc/snort/snort.conf
+
+Use different terminal
+ping 8.8.8.8
+
+RK HUnter:
+
+Command: sudo apt update Command: sudo apt upgrade –y
+sudo apt install -y rkhunter
