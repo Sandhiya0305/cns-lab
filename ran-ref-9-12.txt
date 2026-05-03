@@ -1,0 +1,58 @@
+=======SNORT=======
+
+# Install
+sudo apt update
+sudo add-apt-repository universe
+sudo apt install snort -y
+
+# Check version
+snort -V
+
+# See your (virtual) interface
+ip a
+# Note: your interface might be named differently
+
+# Create the rule file
+sudo mkdir -p /etc/snort/rules
+sudo nano /etc/snort/rules/local.rules
+# Paste: alert icmp any any -> any any (msg:"ICMP Ping Detected"; sid:1000001; rev:1;)
+
+# Edit config to include your rule
+sudo nano /etc/snort/snort.conf
+# Add near other include lines: include $RULE_PATH/local.rules
+
+# Try to run
+sudo snort -i eth0 -A console -c /etc/snort/snort.
+
+
+=======OBSERVE=======
+
+Snort starts
+It listens on the virtual eth0
+If you ping 8.8.8.8 from another terminal, you might see your own ping
+You won't see pings from other machines or the lab network
+
+-----------------------------------------------------------------------------------------------------/
+
+=======RK HUNTER=======
+
+# 1. Update system
+sudo apt update && sudo apt upgrade -y
+
+# 2. Install rkhunter
+sudo apt install -y rkhunter
+
+# 3. Update rkhunter's database
+sudo rkhunter --update
+
+# 4. Run a scan
+sudo rkhunter --check
+
+=======OBSERVE=======
+
+Check for known rootkits
+Look for hidden files
+Verify system binaries
+Generate a report
+
+-----------------------------------------------------------------------------------------------------/
