@@ -1,3 +1,5 @@
+// you wont need to install any tools in lab (already installed)
+
 =======SNORT=======
 
 # Install
