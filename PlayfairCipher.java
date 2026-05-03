@@ -29,5 +29,3 @@ class PlayfairCipher {
                 key[p1[0]][p2[1]] + key[p2[0]][p1[1]]);
     }
 }
-
-Explain this
