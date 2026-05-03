@@ -30,7 +30,7 @@ include $RULE_PATH/local.rules
 
 ip a
 
-example : sudo snort-i <interface_name> -A console -c /etc/snort/snort.conf
+example : sudo snort -i <interface_name> -A console -c /etc/snort/snort.conf
 
 sudo snort -i eth0 -A console -c /etc/snort/snort.conf
 
