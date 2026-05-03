@@ -30,8 +30,7 @@ include $RULE_PATH/local.rules
 
 ip a
 
-sudo snort-i <interface_name>-A console-c
-/etc/snort/snort.conf
+example : sudo snort-i <interface_name> -A console -c /etc/snort/snort.conf
 
 sudo snort -i eth0 -A console -c /etc/snort/snort.conf
 
@@ -40,5 +39,6 @@ ping 8.8.8.8
 
 RK HUnter:
 
-Command: sudo apt update Command: sudo apt upgrade –y
+Command: sudo apt update
+Command: sudo apt upgrade –y
 sudo apt install -y rkhunter
